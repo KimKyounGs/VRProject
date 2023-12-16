@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool mouseCursor = false;
+    public bool bmouseCursor = false;
+    public bool bChracterMove = true;
+    public bool bUI = false;
 
     void Start()
     {
         instance = this;
-        MouseCursorSetting(mouseCursor);
+        MouseCursorSetting(bmouseCursor);
     }
 
     void Update()

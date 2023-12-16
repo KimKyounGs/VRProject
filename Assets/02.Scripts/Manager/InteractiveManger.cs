@@ -6,11 +6,11 @@ public class InteractiveManger : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    float MaxDistance = 30f; 
+    public float MaxDistance = 5f;
 
     void Start()
     {
- 
+        
     }
 
     void Update()
@@ -18,7 +18,10 @@ public class InteractiveManger : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, MaxDistance))
         {
-            Debug.Log("Hit + " + hit.transform.name);
+            if (hit.collider.CompareTag("Heritage"))
+            {
+                Debug.Log("Hit + " + hit.transform.name);
+            }
         }
     }
 
