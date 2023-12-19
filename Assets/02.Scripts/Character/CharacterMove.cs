@@ -23,30 +23,33 @@ public class CharacterMove : MonoBehaviour
 
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-
-        float v = Input.GetAxis("Vertical");
-
-        Vector3 moveDirection = new Vector3(h, 0, v);
-
-        moveDirection = cameraTransform.TransformDirection(moveDirection);
-
-        moveDirection *= moveSpeed;
-
-        
-        if (characterController.isGrounded)
+        if (GameManager.instance.bChracterMove == true)
         {
-            yVelocity = 0;
-            if (Input.GetKeyDown(KeyCode.Space))
+            float h = Input.GetAxis("Horizontal");
+
+            float v = Input.GetAxis("Vertical");
+
+            Vector3 moveDirection = new Vector3(h, 0, v);
+
+            moveDirection = cameraTransform.TransformDirection(moveDirection);
+
+            moveDirection *= moveSpeed;
+
+
+            if (characterController.isGrounded)
             {
-                yVelocity = jumpSpeed;
+                yVelocity = 0;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    yVelocity = jumpSpeed;
+                }
             }
+
+            yVelocity += (gravity * Time.deltaTime);
+
+            moveDirection.y = yVelocity;
+
+            characterController.Move(moveDirection * Time.deltaTime);
         }
-
-        yVelocity += (gravity * Time.deltaTime);
-
-        moveDirection.y = yVelocity;
-
-        characterController.Move(moveDirection * Time.deltaTime);
     }
 }

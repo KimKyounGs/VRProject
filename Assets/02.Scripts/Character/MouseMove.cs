@@ -17,24 +17,27 @@ public class MouseMove : MonoBehaviour
 
     void Update()
     {
-        float mouseMoveX = Input.GetAxis("Mouse X");
-
-        float mouseMoveY = Input.GetAxis("Mouse Y");
-
-        rotationY += mouseMoveX * sesitivity * Time.deltaTime;
-
-        rotationX += mouseMoveY * sesitivity * Time.deltaTime;
-
-        if (rotationX > 35f)
+        if (GameManager.instance.bChracterMove == true)
         {
-            rotationX = 35f;
-        }
+            float mouseMoveX = Input.GetAxis("Mouse X");
 
-        if (rotationX < -30f)
-        {
-            rotationX = -30f;
-        }
+            float mouseMoveY = Input.GetAxis("Mouse Y");
 
-        transform.eulerAngles = new Vector3(-rotationX, rotationY, 0);
+            rotationY += mouseMoveX * sesitivity * Time.deltaTime;
+
+            rotationX += mouseMoveY * sesitivity * Time.deltaTime;
+
+            if (rotationX > 35f)
+            {
+                rotationX = 35f;
+            }
+
+            if (rotationX < -30f)
+            {
+                rotationX = -30f;
+            }
+
+            transform.eulerAngles = new Vector3(-rotationX, rotationY, 0);
+        }
     }
 }

@@ -16,4 +16,8 @@ public class HeritageManager : MonoBehaviour
         
     }
 
+    public void InteractionEvent()
+    {
+        DialogueManager.instance.ShowDialogue(story);
+    }
 }

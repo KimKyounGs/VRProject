@@ -20,7 +20,10 @@ public class InteractiveManger : MonoBehaviour
         {
             if (hit.collider.CompareTag("Heritage"))
             {
-                Debug.Log("Hit + " + hit.transform.name);
+                if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.bChracterMove == true)
+                {
+                    hit.collider.GetComponent<HeritageManager>().InteractionEvent();
+                }
             }
         }
     }

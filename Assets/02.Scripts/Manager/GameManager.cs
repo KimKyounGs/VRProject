@@ -6,13 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool bmouseCursor = false;
-    public bool bChracterMove = true;
-    public bool bUI = false;
+    public bool bmouseCursor = true;
+    public bool bChracterMove = false;
 
     void Start()
     {
         instance = this;
+        bChracterMove = false;
+        bmouseCursor = true;
         MouseCursorSetting(bmouseCursor);
     }
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void MouseCursorSetting(bool flag)
+    public void MouseCursorSetting(bool flag)
     {
         if (flag == false)
         {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
